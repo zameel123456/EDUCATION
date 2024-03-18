@@ -1,0 +1,181 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+                .container{
+                height: 470px;
+                width: 411px;
+                border: 1px solid black;
+                margin-left: 526px;
+                margin-top: 100px;
+                background-image: url();
+                background-repeat: no-repeat;
+}
+h2{
+    color: blueviolet;
+    margin-left: 143px;
+    margin-top: 8px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 100px;
+
+}
+input{
+    width: 337px;
+    color: black;
+    background-color:white;
+    margin-left: 35px;
+    margin-top: 6px;
+
+}
+label{
+    margin-left: 20px;
+    color:black;
+   
+}
+button{
+    background-color: blueviolet;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    width: 131px;
+    color: white;
+    margin-left: 137px;
+    border-radius: 5px;
+    margin-top: 1px;
+}
+.footer{
+        margin-left: 150px;
+        margin-top: 130px; 
+        
+      }
+      a{
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+           <div class="col-0"></div>
+          <div class="col-0">
+            <table>
+              <tr>
+                <td><a href="{% url 'dashboard:home' %}" ><img src="{% static 'image/look.jpg' %}" alt=""></a></td>
+                  <td style="padding: 40px;"><a href="{% url 'dashboard:home' %}">Home</a></td>
+                  <td style="padding: 40px;"><a href="{% url 'dashboard:course' %}">Courses</a></td>
+                  <!-- <td style="padding: 20px;"><a href="">Colleges</a></td> -->
+                  <td style="padding: 40px;"><a href="{% url 'dashboard:login' %}">Login </a></td>
+                  <!-- <td style="padding: 10px;"><a href="">Career</a></td> -->
+                  <!-- <td style="padding: 10px;"><a href="">Contact</a></td> -->
+                  <!-- <td style="padding: 20px;"><a href="">A</a></td> -->
+              </tr>
+          </table>
+    
+          </div>
+        </div>
+      </div>
+   
+   
+    <div class="row"></div>
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="container">
+            <h2>SIGN UP</h2>
+            <form id="myForm" name="form1" onsubmit="return validateForm()" method="post">
+                    {% csrf_token %}
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name"><br><br>
+    
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email"><br><br>
+    
+                    <label for="mobile number">Mobile Number:</label><br>
+                    <input type="text" id="number" name="number"><br><br>
+    
+                    <label for="password">Create Password:</label><br>
+                    <input type="password" id="p1" name=""><br><br>
+    
+                    <label for="password">RE-enter Password:</label><br>
+                    <input type="password" id="p2" name="repass"><br><br>
+    
+                    <p id="error1" style="color: red;"></p>
+                    <button type="submit">Submit</button>
+            </form>
+    
+    
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <div class="row">
+            <div class="col-2">
+                <h4>ABOUT</h4>
+                <p>contact us</p>
+                <p>abouts</p>
+                <p>careers</p>
+                <p>Look And LearnStories</p>
+            </div>
+            <div class="col-2">
+                <h4>HELP</h4>
+                <p>payment</p>
+                <p></p>
+                <p>FAQ</p>
+            </div>
+            <div class="col-2">
+                <h4>CONSUMER POLICY</h4>
+                <p></p>
+                <p>security</p>
+                <p>privacy</p>
+            </div>
+            <div class="col-2">
+                <h4>SOCIAL</h4>
+                <p>youtube</p>
+                <p>instagram</p>
+                <p>twitter</p>
+                <p>telegram</p>
+            </div>
+            <div class="col-2">
+                <h4>EMAIL</h4>
+                <p>LOOK AND LEARN PRIVATE LIMITED</p>
+                <P>lookandlearn23@gmail.com</P>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function validateForm() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var number = document.getElementById("number").value;
+    var p1 = document.getElementById("p1").value;
+    var p2 = document.getElementById("p2").value;
+
+    if (name === "" || email === ""|| p1 === ""||p2==="") {
+      document.getElementById('error1').innerHTML="All fields must be filled out"  
+    return false
+    } 
+    else if(p1.length<6) {
+        document.getElementById('error1').innerHTML="password must be atleast 6 characters"
+    return false
+    }
+    else if(p1!==p2){
+        document.getElementById('error1').innerHTML="password must be same"
+    return false  
+    }
+    else{
+        return true
+    }
+}
+        
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
